@@ -1,7 +1,12 @@
+const { default: mongoose } = require('mongoose');
 const {Schema, model} = require('mongoose');
 
 const reactionSchema = new Schema(
     {
+        reactionId: {
+            type: Schema.Types.ObjectId,
+            default: () => new mongoose.Types.ObjectId()
+        },
         reactionBody: {
             type: String,
             required: true,
@@ -16,7 +21,8 @@ const reactionSchema = new Schema(
         toJSON: {
             getters: true
         },
-        timestamps: true
+        timestamps: true,
+        id: false
     }
 );
 
@@ -38,7 +44,8 @@ const thoughtSchema = new Schema(
         toJSON: {
             getters: true
         },
-        timestamps: true
+        timestamps: true,
+        id: false
     }
 );
 
@@ -48,4 +55,4 @@ thoughtSchema
 
     const Thought = model('thought', thoughtSchema);
 
-    module.exports = {Thought, thoughtSchema};
+    module.exports = Thought;
