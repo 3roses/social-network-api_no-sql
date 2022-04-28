@@ -7,6 +7,7 @@ connection.on('error', (err) => err);
 connection.once('open', async () => {
     console.log('connected');
     await User.deleteMany({});
+    await Thought.deleteMany({});
     console.log('data deleted');
 
     await User.create(userData);

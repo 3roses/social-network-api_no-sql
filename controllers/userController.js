@@ -1,5 +1,5 @@
 
-const { User, Thought } = require('../models');
+const {User} = require('../models');
 
 const getAllUsers = async (req, res) => {
     try {
@@ -25,7 +25,7 @@ const createUser = async (req, res) => {
     try {
         const user = await User.create(req.body);
         res.status(200).json(user);
-    }catch (err) {
+    } catch (err) {
         console.error(err);
         res.status(500).json(err);
     }
@@ -51,7 +51,7 @@ const removeUser = async (req, res) => {
             {_id: req.params.userId}
         );
         res.status(200).json(user);
-    }catch (err) {
+    } catch (err) {
         console.error(err);
         res.status(500).json(err);
     }
